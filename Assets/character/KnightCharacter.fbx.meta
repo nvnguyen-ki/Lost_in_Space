@@ -1,47 +1,44 @@
 fileFormatVersion: 2
-guid: 4822d915e5b7adf49b90525e64dd5fc7
+guid: c564a86346e9fb4449150a31261c8434
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: 4523737202199915946
-    second: HumanArmature|Man_Clapping
+      74: 8840625850001536255
+    second: HumanArmature|Death
   - first:
-      74: -3916294550958455020
-    second: HumanArmature|Man_Death
+      74: -351779943408996871
+    second: HumanArmature|Idle
   - first:
-      74: 8106746524365628829
-    second: HumanArmature|Man_Idle
+      74: 2227261800235141634
+    second: HumanArmature|Idle_swordLeft
   - first:
-      74: -6398272582352398571
-    second: HumanArmature|Man_Jump
+      74: 8734705249530881500
+    second: HumanArmature|Idle_swordRight
   - first:
-      74: 4607071556537973139
-    second: HumanArmature|Man_Punch
+      74: 7043771016534994723
+    second: HumanArmature|Jump
   - first:
-      74: 7354251634412414196
-    second: HumanArmature|Man_Run
+      74: -6409446604469202899
+    second: HumanArmature|Roll
   - first:
-      74: 1443013137757961451
-    second: HumanArmature|Man_RunningJump
+      74: -3097398495753999571
+    second: HumanArmature|Roll_sword
   - first:
-      74: -6153676157489181926
-    second: HumanArmature|Man_Sitting
+      74: 3921484852692588199
+    second: HumanArmature|Run
   - first:
-      74: -9164212156404960148
-    second: HumanArmature|Man_Standing
+      74: -5691987171044860581
+    second: HumanArmature|Run_swordAttack
   - first:
-      74: 3655391794997471651
-    second: HumanArmature|Man_SwordSlash
+      74: 7626545373317100532
+    second: HumanArmature|Run_swordRight
   - first:
-      74: 1555546630585696353
-    second: HumanArmature|Man_Walk
+      74: -4551912890885136116
+    second: HumanArmature|swordAttackJump
   - first:
-      74: 7439241991001182241
-    second: HumanArmature|Man_Walk (1)
-  - first:
-      74: -6575936277095046760
-    second: HumanArmature|Man_Run (1)
+      74: 924515358712686081
+    second: HumanArmature|Walking
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -71,40 +68,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: HumanArmature|Man_Walk (1)
-      takeName: HumanArmature|Man_Walk
+      name: HumanArmature|Death
+      takeName: HumanArmature|Death
       internalID: 0
       firstFrame: 0
-      lastFrame: 25
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: HumanArmature|Man_Death
-      takeName: HumanArmature|Man_Death
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 50
+      lastFrame: 34
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -129,69 +97,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: HumanArmature|Man_Idle
-      takeName: HumanArmature|Man_Idle
+      name: HumanArmature|Idle
+      takeName: HumanArmature|Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 100
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: HumanArmature|Man_Jump
-      takeName: HumanArmature|Man_Jump
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 25
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: HumanArmature|Man_Punch
-      takeName: HumanArmature|Man_Punch
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 22
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -216,11 +126,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: HumanArmature|Man_Run
-      takeName: HumanArmature|Man_Run
+      name: HumanArmature|Idle_swordLeft
+      takeName: HumanArmature|Idle_swordLeft
       internalID: 0
       firstFrame: 0
-      lastFrame: 21
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -245,8 +155,95 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: HumanArmature|Man_RunningJump
-      takeName: HumanArmature|Man_RunningJump
+      name: HumanArmature|Idle_swordRight
+      takeName: HumanArmature|Idle_swordRight
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HumanArmature|Jump
+      takeName: HumanArmature|Jump
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HumanArmature|Roll
+      takeName: HumanArmature|Roll
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HumanArmature|Roll_sword
+      takeName: HumanArmature|Roll_sword
       internalID: 0
       firstFrame: 0
       lastFrame: 30
@@ -274,37 +271,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: HumanArmature|Man_Sitting
-      takeName: HumanArmature|Man_Sitting
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 200
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: HumanArmature|Man_Standing
-      takeName: HumanArmature|Man_Standing
+      name: HumanArmature|Run
+      takeName: HumanArmature|Run
       internalID: 0
       firstFrame: 0
       lastFrame: 20
@@ -332,11 +300,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: HumanArmature|Man_SwordSlash
-      takeName: HumanArmature|Man_SwordSlash
+      name: HumanArmature|Run_swordAttack
+      takeName: HumanArmature|Run_swordAttack
       internalID: 0
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -361,11 +329,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: HumanArmature|Man_Run (1)
-      takeName: HumanArmature|Man_Run
+      name: HumanArmature|Run_swordRight
+      takeName: HumanArmature|Run_swordRight
       internalID: 0
       firstFrame: 0
-      lastFrame: 21
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HumanArmature|swordAttackJump
+      takeName: HumanArmature|swordAttackJump
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -373,6 +370,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HumanArmature|Walking
+      takeName: HumanArmature|Walking
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 100;
     public float currentHealth;
     public HealthBar healthBar;
+    int isAttacking;
+    int isRolling;
+    public Transform heart;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -29,6 +32,8 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         isWalking = Animator.StringToHash("isWalking");
         isRunning = Animator.StringToHash("isRunning");
+        isRolling = Animator.StringToHash("isRolling");
+        isAttacking = Animator.StringToHash("isAttacking");
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -41,10 +46,12 @@ public class PlayerController : MonoBehaviour
         MouseInput = Input.GetAxis("Mouse X");
         VerticalInput = Input.GetAxis("Vertical");
         bool runShift = Input.GetKey("left shift");
-        bool jump = Input.GetKey("space");
+        bool roll = Input.GetKey("space");
+        bool attack = Input.GetMouseButtonDown(0);
+        
 
         // move foward : moving the z (60 units in a second) based on vertical input
-        
+
         // turn : rotate the car based on horizontal input
         transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * MouseInput);
         if (VerticalInput > 0)
@@ -52,7 +59,7 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.forward * (Time.deltaTime * speed * VerticalInput));
             anim.SetBool(isWalking, true);
             anim.SetFloat("Speed", 1.0f);
-            takeDamage(0.01f);
+            takeDamage(0.05f);
         } 
         else if (VerticalInput < 0)
         {
@@ -76,27 +83,39 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        /*if (jump && isOnGround) {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
-            anim.SetBool(isJumping, true);
-        } else if (!jump)
-        {
-            anim.SetBool(isJumping, false);
+        if (roll) {
+            anim.SetBool(isRolling, true);
+        } else {
+            anim.SetBool(isRolling, false);
         }
-        */
-    
+        if (isRolling == 0)
+        {
+            anim.SetBool(isRolling, false);
+        }
 
-}
+        if (attack)
+        {
+            anim.SetBool(isAttacking, true);
+        }
+        else
+        {
+            anim.SetBool(isAttacking, false);
+        }
+        if (isAttacking == 0)
+        {
+            anim.SetBool(isAttacking, false);
+        }
+
+
+    }
+    
     void takeDamage(float damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+
     }
+
     
-    private void OnCollisionEnter(Collision collision)
-    {
-        isOnGround = true;
-    }
     
 }
