@@ -6,7 +6,7 @@ public class healPlayerOnCollision : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public PlayerController playerHealth;
+    public AlienController playerHealth;
 
     void heal(float health)
     {

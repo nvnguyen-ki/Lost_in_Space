@@ -25,6 +25,13 @@ public class PlayerController : MonoBehaviour
     int isAttacking;
     int isRolling;
     public Transform heart;
+    public bool isDead
+    {
+        get
+        {
+            return currentHealth < 0;
+        }
+    }
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -41,70 +48,86 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        // update the vehicle movement
-        MouseInput = Input.GetAxis("Mouse X");
-        VerticalInput = Input.GetAxis("Vertical");
-        bool runShift = Input.GetKey("left shift");
-        bool roll = Input.GetKey("space");
-        bool attack = Input.GetMouseButtonDown(0);
-        
 
-        // move foward : moving the z (60 units in a second) based on vertical input
-
-        // turn : rotate the car based on horizontal input
-        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * MouseInput);
-        if (VerticalInput > 0)
+        if (!isDead)
         {
-            transform.Translate(Vector3.forward * (Time.deltaTime * speed * VerticalInput));
-            anim.SetBool(isWalking, true);
-            anim.SetFloat("Speed", 1.0f);
-            takeDamage(0.05f);
+
+            // update the vehicle movement
+            MouseInput = Input.GetAxis("Mouse X");
+            VerticalInput = Input.GetAxis("Vertical");
+            bool runShift = Input.GetKey("left shift");
+            bool roll = Input.GetKey("space");
+            bool attack = Input.GetMouseButtonDown(0);
+
+
+            // move foward : moving the z (60 units in a second) based on vertical input
+
+            // turn : rotate the car based on horizontal input
+            transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * MouseInput);
+            if (VerticalInput > 0)
+            {
+                transform.Translate(Vector3.forward * (Time.deltaTime * speed * VerticalInput));
+                anim.SetBool(isWalking, true);
+                anim.SetFloat("Speed", 1.0f);
+                takeDamage(0.05f);
+            }
+            else if (VerticalInput < 0)
+            {
+                transform.Translate(Vector3.forward * (Time.deltaTime * speed * VerticalInput));
+                anim.SetBool(isWalking, true);
+                anim.SetFloat("Speed", -1.0f);
+
+            }
+            else
+            {
+                anim.SetBool(isWalking, false);
+            }
+
+            if (VerticalInput > 0 && runShift)
+            {
+                anim.SetBool(isRunning, true);
+                transform.Translate(Vector3.forward * (Time.deltaTime * runSpeed * VerticalInput));
+            }
+            else
+            {
+                transform.Translate(Vector3.forward * (Time.deltaTime * speed * VerticalInput));
+                anim.SetBool(isRunning, false);
+            }
+
+
+            if (roll)
+            {
+                anim.SetBool(isRolling, true);
+            }
+            else
+            {
+                anim.SetBool(isRolling, false);
+            }
+            if (isRolling == 0)
+            {
+                anim.SetBool(isRolling, false);
+            }
+
+            if (attack)
+            {
+                anim.SetBool(isAttacking, true);
+            }
+            else
+            {
+                anim.SetBool(isAttacking, false);
+            }
+            if (isAttacking == 0)
+            {
+                anim.SetBool(isAttacking, false);
+            }
+        }
+
+        if (isDead)
+        {
+            anim.SetTrigger("death");
+
         } 
-        else if (VerticalInput < 0)
-        {
-            transform.Translate(Vector3.forward * (Time.deltaTime * speed * VerticalInput));
-            anim.SetBool(isWalking, true);
-            anim.SetFloat("Speed", -1.0f);
-            
-        } else
-        {
-            anim.SetBool(isWalking, false);
-        }
-
-        if (VerticalInput > 0 && runShift)
-        {
-            anim.SetBool(isRunning, true);
-            transform.Translate(Vector3.forward * (Time.deltaTime * runSpeed * VerticalInput));
-        } else
-        {
-            transform.Translate(Vector3.forward * (Time.deltaTime * speed * VerticalInput));
-            anim.SetBool(isRunning, false);
-        }
-
-
-        if (roll) {
-            anim.SetBool(isRolling, true);
-        } else {
-            anim.SetBool(isRolling, false);
-        }
-        if (isRolling == 0)
-        {
-            anim.SetBool(isRolling, false);
-        }
-
-        if (attack)
-        {
-            anim.SetBool(isAttacking, true);
-        }
-        else
-        {
-            anim.SetBool(isAttacking, false);
-        }
-        if (isAttacking == 0)
-        {
-            anim.SetBool(isAttacking, false);
-        }
+        
 
 
     }
