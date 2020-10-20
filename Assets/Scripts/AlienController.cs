@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // inherit from MonoBehavioor
 public class AlienController : MonoBehaviour
@@ -11,6 +12,7 @@ public class AlienController : MonoBehaviour
     public float mouseSens = 100f;
     private float turnSpeed = 45f;
     private float MouseInput;
+    private float verticalMouse;
     private float VerticalInput;
     // Start is called before the first frame update
     Animator anim;
@@ -25,15 +27,20 @@ public class AlienController : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public float jumpHeight = 3f;
+    public Image key;
     bool isGrounded;
+    public Transform playerbody;
     void Start()
     {
+        key.enabled = false;
         cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         isWalking = Animator.StringToHash("isWalking");
         isRunning = Animator.StringToHash("isRunning");
         this.currentHealth = maxHealth;
         this.healthBar.SetMaxHealth(maxHealth);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -52,12 +59,22 @@ public class AlienController : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
             cc.Move(velocity * Time.deltaTime);
             MouseInput = Input.GetAxis("Mouse X");
+            verticalMouse = Input.GetAxis("Mouse Y");
             VerticalInput = Input.GetAxis("Vertical");
             bool runShift = Input.GetKey("left shift");
-            float x = Input.GetAxis("Horizontal");
             Vector3 move;
             // move foward : moving the z (60 units in a second) based on vertical input
             transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * MouseInput);
+            if(Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                anim.SetBool("isJumping", true);
+
+            } 
+            else
+            {
+                anim.SetBool("isJumping", false);
+            }
             if (VerticalInput > 0)
             {
                 move = (transform.forward * (Time.deltaTime * speed * VerticalInput));
@@ -90,6 +107,7 @@ public class AlienController : MonoBehaviour
                 cc.Move(move);
                 anim.SetBool(isRunning, false);
             }
+            
 
         }
 
@@ -111,6 +129,12 @@ public class AlienController : MonoBehaviour
             heal(5f);
             Destroy(hit.gameObject);
             Debug.Log("healing");
+        }
+        if (hit.transform.CompareTag("key"))
+        {
+            Destroy(hit.gameObject);
+            key.enabled = true;
+            Debug.Log("Got the key");
         }
     }
 
