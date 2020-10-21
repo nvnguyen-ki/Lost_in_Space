@@ -14,6 +14,7 @@ public class AlienController : MonoBehaviour
     private float MouseInput;
     private float verticalMouse;
     private float VerticalInput;
+    public Transform SpaceShip;
     // Start is called before the first frame update
     Animator anim;
     int isWalking;
@@ -29,27 +30,49 @@ public class AlienController : MonoBehaviour
     public LayerMask groundMask;
     public float jumpHeight = 3f;
     public Image key;
+    public Text interactText;
     bool isGrounded;
     public Transform playerbody;
+    public float distance;
+    public Boolean keyFound;
     void Start()
     {
+        keyFound = false;
         key.enabled = false;
+        interactText.enabled = false;
         cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         isWalking = Animator.StringToHash("isWalking");
         isRunning = Animator.StringToHash("isRunning");
         this.currentHealth = maxHealth;
         this.healthBar.SetMaxHealth(maxHealth);
+        
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
+        distance = Vector3.Distance(SpaceShip.position, playerbody.position);
         // check if grounded through a sphere at the feet
-        
         if (!isDead)
         {
+            if (distance < 17)
+            { //Checking if player is near enough
+                interactText.enabled = true;
+                if (Input.GetKey(KeyCode.E) && !keyFound)
+                {
+                    Debug.Log("find the key first");
+                } 
+                else if (Input.GetKey(KeyCode.E) && keyFound)
+                {
+                    Debug.Log("Lets GOOOOO!");
+                } 
+            }
+            else
+            {
+                interactText.enabled = false;
+            }
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
             if (isGrounded && velocity.y < 0)
@@ -81,7 +104,7 @@ public class AlienController : MonoBehaviour
                 cc.Move(move);
                 anim.SetBool(isWalking, true);
                 anim.SetFloat("Speed", 1.0f);
-                takeDamage(0.05f);
+                takeDamage(0.01f);
             }
             else if (VerticalInput < 0)
             {
@@ -135,6 +158,7 @@ public class AlienController : MonoBehaviour
             Destroy(hit.gameObject);
             key.enabled = true;
             Debug.Log("Got the key");
+            keyFound = true;
         }
     }
 
