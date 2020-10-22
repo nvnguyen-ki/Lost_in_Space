@@ -3,10 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 // inherit from MonoBehavioor
 public class AlienController : MonoBehaviour
 {
+    public Animator animator;
+    private int LeveltoLoad;
+
+   
+    public void FadeToLevel(int LevelIndex)
+    {
+        animator.SetTrigger("FadeOut");
+        LeveltoLoad = LevelIndex;
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(3);
+        FadeToLevel(3);
+    }
+
+   
     float speed = 3.0f;
     float runSpeed = 6.0f;
     public float mouseSens = 100f;
@@ -14,6 +31,7 @@ public class AlienController : MonoBehaviour
     private float MouseInput;
     private float verticalMouse;
     private float VerticalInput;
+    public int partsCollected;
     public Transform SpaceShip;
     // Start is called before the first frame update
     Animator anim;
@@ -29,16 +47,15 @@ public class AlienController : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public float jumpHeight = 3f;
-    public Image key;
+    public AudioSource healSound;
+    public AudioSource partsSound;
     public Text interactText;
     bool isGrounded;
     public Transform playerbody;
     public float distance;
-    public Boolean keyFound;
     void Start()
     {
-        keyFound = false;
-        key.enabled = false;
+        partsCollected = 0;
         interactText.enabled = false;
         cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -46,7 +63,6 @@ public class AlienController : MonoBehaviour
         isRunning = Animator.StringToHash("isRunning");
         this.currentHealth = maxHealth;
         this.healthBar.SetMaxHealth(maxHealth);
-        
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -60,13 +76,14 @@ public class AlienController : MonoBehaviour
             if (distance < 17)
             { //Checking if player is near enough
                 interactText.enabled = true;
-                if (Input.GetKey(KeyCode.E) && !keyFound)
+                if (Input.GetKey(KeyCode.E) && partsCollected != 6)
                 {
-                    Debug.Log("find the key first");
+                    Debug.Log("find the all the parts!");
                 } 
-                else if (Input.GetKey(KeyCode.E) && keyFound)
+                else if (Input.GetKey(KeyCode.E) && partsCollected == 6)
                 {
                     Debug.Log("Lets GOOOOO!");
+                    Credits();
                 } 
             }
             else
@@ -152,13 +169,15 @@ public class AlienController : MonoBehaviour
             heal(5f);
             Destroy(hit.gameObject);
             Debug.Log("healing");
+            healSound.Play();
         }
-        if (hit.transform.CompareTag("key"))
+        if (hit.transform.CompareTag("parts"))
         {
             Destroy(hit.gameObject);
-            key.enabled = true;
-            Debug.Log("Got the key");
-            keyFound = true;
+            Debug.Log("Got parts");
+            partsCollected++;
+            partsSound.Play();
+            Debug.Log(partsCollected);
         }
     }
 

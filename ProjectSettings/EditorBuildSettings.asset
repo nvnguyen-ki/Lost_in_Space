@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/sandLevel.unity
     guid: 5f069581d645b3b40b12d547f6f20c4b
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 2a25fcd278d76a64093f58ace97d10cc
+  - enabled: 1
+    path: Assets/Scenes/Credits(2).unity
+    guid: ad959d5df5bd46d4f9336aef9b28632e
   m_configObjects: {}

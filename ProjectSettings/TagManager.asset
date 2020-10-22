@@ -6,6 +6,7 @@ TagManager:
   tags:
   - heart
   - key
+  - parts
   layers:
   - Default
   - TransparentFX
