@@ -10,7 +10,7 @@ public class AlienController : MonoBehaviour
     public Animator animator;
     private int LeveltoLoad;
 
-   
+
     public void FadeToLevel(int LevelIndex)
     {
         animator.SetTrigger("FadeOut");
@@ -23,15 +23,15 @@ public class AlienController : MonoBehaviour
         FadeToLevel(3);
     }
 
-   
+
     float speed = 3.0f;
     float runSpeed = 6.0f;
     public float mouseSens = 100f;
     private float turnSpeed = 45f;
     private float MouseInput;
     private float verticalMouse;
+    
     private float VerticalInput;
-    public float partsInTotal;
     public Camera cam;
     public Transform SpaceShip;
     public Transform alienHead;
@@ -52,21 +52,19 @@ public class AlienController : MonoBehaviour
     public AudioSource healSound;
     public AudioSource partsSound;
     public Text interactText;
+    public Text errorText;
     bool isGrounded;
     public Transform playerbody;
     public float distance;
-    public float yMinLimit = -33f;
-    public float yMaxLimit = 33f;
-
-
-    public void subTractOne()
+    public int numberOfTaggedObjects;
+ 
+    
+        void Start()
     {
-        this.partsInTotal-=1;
-    }
-    void Start()
-    {
-        partsInTotal = 6;
+        numberOfTaggedObjects = GameObject.FindGameObjectsWithTag("parts").Length;
+        Debug.Log(numberOfTaggedObjects);
         interactText.enabled = false;
+        errorText.enabled = false;
         cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         isWalking = Animator.StringToHash("isWalking");
@@ -75,7 +73,7 @@ public class AlienController : MonoBehaviour
         this.healthBar.SetMaxHealth(maxHealth);
         Cursor.lockState = CursorLockMode.Locked;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -86,15 +84,16 @@ public class AlienController : MonoBehaviour
             if (distance < 17)
             { //Checking if player is near enough
                 interactText.enabled = true;
-                if (Input.GetKey(KeyCode.E) && this.partsInTotal != 0)
+                if (Input.GetKey(KeyCode.E) && numberOfTaggedObjects != 0)
                 {
-                    Debug.Log("find the all the parts!");
-                } 
-                else if (Input.GetKey(KeyCode.E) && this.partsInTotal == 0)
+                    StartCoroutine(popUp());
+                    Debug.Log("You need to collect " + numberOfTaggedObjects + " more parts.");
+                }
+                else if (Input.GetKey(KeyCode.E) && numberOfTaggedObjects == 0)
                 {
                     Debug.Log("Lets GOOOOO!");
                     Credits();
-                } 
+                }
             }
             else
             {
@@ -115,15 +114,15 @@ public class AlienController : MonoBehaviour
             Vector3 move;
             // move foward : moving the z (60 units in a second) based on vertical input
             transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * MouseInput);
-            cam.transform.Rotate(Vector3.left, Time.deltaTime * turnSpeed * verticalMouse);
-            
-            alienHead.transform.Rotate(Vector3.left, Time.deltaTime * turnSpeed * verticalMouse);
+            cam.transform.Rotate(Vector3.left, Time.deltaTime * 10 * verticalMouse);
+
+            alienHead.LookAt(cam.transform.position);
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 anim.SetBool("isJumping", true);
 
-            } 
+            }
             else
             {
                 anim.SetBool("isJumping", false);
@@ -160,7 +159,7 @@ public class AlienController : MonoBehaviour
                 cc.Move(move);
                 anim.SetBool(isRunning, false);
             }
-            
+
 
         }
 
@@ -173,7 +172,13 @@ public class AlienController : MonoBehaviour
 
 
     }
-
+    public IEnumerator popUp()
+    {
+        errorText.text = "You need to collect " + numberOfTaggedObjects + " more parts.";
+        errorText.enabled = true;
+        yield return new WaitForSeconds(3f);
+        errorText.enabled = false;
+    }
     public void OnControllerColliderHit(ControllerColliderHit hit)
     {
 
@@ -188,9 +193,9 @@ public class AlienController : MonoBehaviour
         {
             Destroy(hit.gameObject);
             Debug.Log("Got parts");
-            subTractOne();
+            numberOfTaggedObjects = GameObject.FindGameObjectsWithTag("parts").Length-1;
             partsSound.Play();
-            Debug.Log(partsInTotal);
+            Debug.Log(numberOfTaggedObjects);
         }
     }
 
