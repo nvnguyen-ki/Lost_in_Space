@@ -31,8 +31,10 @@ public class AlienController : MonoBehaviour
     private float MouseInput;
     private float verticalMouse;
     private float VerticalInput;
-    public int partsCollected;
+    public float partsInTotal;
+    public Camera cam;
     public Transform SpaceShip;
+    public Transform alienHead;
     // Start is called before the first frame update
     Animator anim;
     int isWalking;
@@ -53,9 +55,17 @@ public class AlienController : MonoBehaviour
     bool isGrounded;
     public Transform playerbody;
     public float distance;
+    public float yMinLimit = -33f;
+    public float yMaxLimit = 33f;
+
+
+    public void subTractOne()
+    {
+        this.partsInTotal-=1;
+    }
     void Start()
     {
-        partsCollected = 0;
+        partsInTotal = 6;
         interactText.enabled = false;
         cc = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -76,11 +86,11 @@ public class AlienController : MonoBehaviour
             if (distance < 17)
             { //Checking if player is near enough
                 interactText.enabled = true;
-                if (Input.GetKey(KeyCode.E) && partsCollected != 6)
+                if (Input.GetKey(KeyCode.E) && this.partsInTotal != 0)
                 {
                     Debug.Log("find the all the parts!");
                 } 
-                else if (Input.GetKey(KeyCode.E) && partsCollected == 6)
+                else if (Input.GetKey(KeyCode.E) && this.partsInTotal == 0)
                 {
                     Debug.Log("Lets GOOOOO!");
                     Credits();
@@ -105,7 +115,10 @@ public class AlienController : MonoBehaviour
             Vector3 move;
             // move foward : moving the z (60 units in a second) based on vertical input
             transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * MouseInput);
-            if(Input.GetButtonDown("Jump") && isGrounded)
+            cam.transform.Rotate(Vector3.left, Time.deltaTime * turnSpeed * verticalMouse);
+            
+            alienHead.transform.Rotate(Vector3.left, Time.deltaTime * turnSpeed * verticalMouse);
+            if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 anim.SetBool("isJumping", true);
@@ -171,13 +184,13 @@ public class AlienController : MonoBehaviour
             Debug.Log("healing");
             healSound.Play();
         }
-        if (hit.transform.CompareTag("parts"))
+        else if (hit.transform.CompareTag("parts"))
         {
             Destroy(hit.gameObject);
             Debug.Log("Got parts");
-            partsCollected++;
+            subTractOne();
             partsSound.Play();
-            Debug.Log(partsCollected);
+            Debug.Log(partsInTotal);
         }
     }
 
