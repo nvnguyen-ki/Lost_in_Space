@@ -1,6 +1,6 @@
 ## Lost_in_Space
 
-Lost in Space is a 3D game created with unity and C#.
+Lost in Space is a 3D environment based game created with unity and C#.
 
 A simple game where you are lost in space and your goal is to explore the terrain and find the parts to your spaceship.
 
