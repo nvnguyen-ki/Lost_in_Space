@@ -8,6 +8,7 @@ TagManager:
   - key
   - parts
   - allParts
+  - music
   layers:
   - Default
   - TransparentFX

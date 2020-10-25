@@ -6,14 +6,16 @@ public class MainMenu : MonoBehaviour
 {
     public Animator animator;
     private int LeveltoLoad;
-
+    void Start()
+    {
+    }
     void Update()
     {
         
     }
     public void FadeToLevel (int LevelIndex)
     {
-        animator.SetTrigger("FadeOut");
+        animator.SetTrigger("fadeOut");
         LeveltoLoad = LevelIndex;
     }
     public void onFadeComplete()

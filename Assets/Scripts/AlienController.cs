@@ -23,7 +23,7 @@ public class AlienController : MonoBehaviour
         FadeToLevel(3);
     }
 
-
+    public Text partsFound;
     float speed = 3.0f;
     float runSpeed = 6.0f;
     public float mouseSens = 100f;
@@ -61,7 +61,9 @@ public class AlienController : MonoBehaviour
     
         void Start()
     {
+        
         numberOfTaggedObjects = GameObject.FindGameObjectsWithTag("parts").Length;
+        partsFound.text = "parts needed : " + numberOfTaggedObjects;
         Debug.Log(numberOfTaggedObjects);
         interactText.enabled = false;
         errorText.enabled = false;
@@ -163,7 +165,7 @@ public class AlienController : MonoBehaviour
 
         }
 
-        if (isDead)
+        if (isDead || transform.position.y < -50) 
         {
             anim.SetTrigger("death");
 
@@ -195,7 +197,9 @@ public class AlienController : MonoBehaviour
             Debug.Log("Got parts");
             numberOfTaggedObjects = GameObject.FindGameObjectsWithTag("parts").Length-1;
             partsSound.Play();
+            partsFound.text = "parts needed : " + numberOfTaggedObjects;
             Debug.Log(numberOfTaggedObjects);
+            partsFound.enabled = true;
         }
     }
 
