@@ -246,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &35185086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b7ac9ef82e84a714ab5d7de6d402e8fc, type: 3}
+    m_Font: {fileID: 12800000, guid: 67f13812f831e4243adcefa879543bd4, type: 3}
     m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
@@ -658,7 +658,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b7ac9ef82e84a714ab5d7de6d402e8fc, type: 3}
+    m_Font: {fileID: 12800000, guid: 67f13812f831e4243adcefa879543bd4, type: 3}
     m_FontSize: 20
     m_FontStyle: 2
     m_BestFit: 0
@@ -1170,9 +1170,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dbc70c9763fbf7b4ca8f30bc13ab95bc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 70c433fec1d51f547bd74a8faddcd126, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.389
+  m_Volume: 0.509
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1982,7 +1982,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b7ac9ef82e84a714ab5d7de6d402e8fc, type: 3}
+    m_Font: {fileID: 12800000, guid: 67f13812f831e4243adcefa879543bd4, type: 3}
     m_FontSize: 15
     m_FontStyle: 2
     m_BestFit: 0
@@ -3034,7 +3034,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b7ac9ef82e84a714ab5d7de6d402e8fc, type: 3}
+    m_Font: {fileID: 12800000, guid: 67f13812f831e4243adcefa879543bd4, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
@@ -3137,7 +3137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141453848}
   m_LocalRotation: {x: 0.13052422, y: 0.000019621513, z: 0.0000004946123, w: 0.9914452}
-  m_LocalPosition: {x: -0.00036621094, y: 4, z: -3}
+  m_LocalPosition: {x: -0.00036621094, y: 2, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5788614863443699478}
@@ -3587,6 +3587,7 @@ GameObject:
   - component: {fileID: 8775043603351990169}
   - component: {fileID: 5841196161967970003}
   - component: {fileID: 6932626245974422087}
+  - component: {fileID: 536237130109025443}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -3594,6 +3595,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &536237130109025443
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536237130109025442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: ea18cb9aef29d354f8e468c1ff53292b, type: 3}
 --- !u!4 &637834392858558407
 Transform:
   m_ObjectHideFlags: 0
@@ -4559,6 +4574,7 @@ GameObject:
   - component: {fileID: 5195266601811605121}
   - component: {fileID: 6975623023744012235}
   - component: {fileID: 5903055895154092895}
+  - component: {fileID: 3940478204890867131}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -4566,6 +4582,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &3940478204890867131
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940478204890867130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: e6805e9e59ee18444957a2ca1dcd67bd, type: 3}
 --- !u!4 &4019733905252946715
 Transform:
   m_ObjectHideFlags: 0
